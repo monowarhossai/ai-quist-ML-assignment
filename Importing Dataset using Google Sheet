@@ -1,0 +1,28 @@
+import pandas as pd
+import gspread
+gc = gspread.service_account(filename="C:\\Users\\hp\\Downloads\\my-1st-project-377705-037084bca848.json")
+gc
+<gspread.client.Client at 0x21c5e5cff40>
+sheet= gc.open_by_url("https://docs.google.com/spreadsheets/d/1NzPnI-u0uvwZJo1NK_XJzNTMPz5IExAS4J_cR1ykZ9o/edit?usp=sharing")
+sheet
+<Spreadsheet 'Team Member list' id:1NzPnI-u0uvwZJo1NK_XJzNTMPz5IExAS4J_cR1ykZ9o>
+ws = sheet.worksheet('emp1')
+ws
+<Worksheet 'emp1' id:1782853389>
+df = pd.DataFrame(ws.get_all_records())
+df
+name1	age1
+0	Monowar	28
+1	habib	27
+2	yousuf	26
+3	hasib	25
+4	razzak	28
+ws2 = sheet.worksheet('emp2')
+df2 = pd.DataFrame(ws2.get_all_records())
+df2
+	Name2	Age2
+0	Shakil	30
+1	sohan	29
+2	mejbah	28
+3	rakib	27
+
